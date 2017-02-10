@@ -1,3 +1,54 @@
 body {
-  background: red;
+  background: white;
+  height: 800px;
+}
+
+h1 {
+  height: 60px;
+  text: 40px;
+  /*background-color: gray;*/
+  text-align: center;
+}
+
+.leftSide, .rightSide {
+  width: 175px;
+  height: 800px;
+  background-color: orange;
+  font-size: 12;
+  color: black;
+  float: left;
+}
+
+.grid {
+  float: left;
+}
+
+main {
+  max-width: 900px;
+  height: 800px;
+  margin: 0 auto;
+}
+
+.clearfix {
+  overflow: auto;
+  zoom: 1;
+}
+ul {
+  display: inline-block;
+  width: 528px;
+  margin: 0 10px;
+  border-spacing: 0px 0px;
+  padding: 0;
+}
+
+
+li {
+   display: inline-block;
+   width: 60px;
+   float: left;
+   height: 60px;
+   border: 1px solid black;
+   text-align: center;
+   padding: 3px;
+   margin: 2px;
 }
