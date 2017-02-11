@@ -6,7 +6,6 @@ body {
 h1 {
   height: 60px;
   text: 40px;
-  /*background-color: gray;*/
   text-align: center;
 }
 
@@ -33,10 +32,11 @@ main {
   overflow: auto;
   zoom: 1;
 }
+
 ul {
   display: inline-block;
   width: 528px;
-  margin: 0 10px;
+  margin: 50px 10px;
   border-spacing: 0px 0px;
   padding: 0;
 }
@@ -51,4 +51,15 @@ li {
    text-align: center;
    padding: 3px;
    margin: 2px;
+}
+
+.reset_btn {
+}
+
+.button_drop {
+  display: inline-block;
+  float: left;
+  align: center;
+  margin: 15px;
+  padding: 3px;
 }
