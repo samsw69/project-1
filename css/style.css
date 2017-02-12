@@ -6,6 +6,7 @@ body {
 h1 {
   height: 60px;
   text: 40px;
+  /*background-color: gray;*/
   text-align: center;
 }
 
@@ -20,6 +21,12 @@ h1 {
 
 .grid {
   float: left;
+}
+
+.squares {
+  float: left;
+  height, width: 56px;
+  background image: url("blank.gif");
 }
 
 main {
@@ -57,7 +64,7 @@ li {
 }
 
 .button_drop {
-  display: inline-block;
+  display: block;
   float: left;
   align: center;
   margin: 15px;
