@@ -5,9 +5,18 @@ body {
 
 h1 {
   height: 60px;
-  text: 40px;
   /*background-color: gray;*/
   text-align: center;
+  font-family: 'Pangolin', cursive;
+  font-size: 50px
+}
+header {
+  height: 80px;
+
+}
+
+button {
+align-self: center;
 }
 
 .leftSide, .rightSide {
@@ -26,13 +35,15 @@ h1 {
 .squares {
   float: left;
   height, width: 56px;
-  background image: url("blank.gif");
+  background-image: url("../images/blank.gif");
 }
 
 main {
   max-width: 900px;
   height: 800px;
   margin: 0 auto;
+  background-image: url("../images/ink.jpg");
+  background-position: right top;
 }
 
 .clearfix {
@@ -50,23 +61,35 @@ ul {
 
 
 li {
-   display: inline-block;
-   width: 60px;
-   float: left;
-   height: 60px;
-   border: 1px solid black;
-   text-align: center;
-   padding: 3px;
-   margin: 2px;
+  display: inline-block;
+  width: 60px;
+  float: left;
+  height: 60px;
+  border: 1px solid white;
+  text-align: center;
+  padding: 3px;
+  margin: 2px;
 }
 
-.reset_btn {
+#reset_btn, #instructions  {
+  float: right;
+  margin: 10px;
+  padding: 10px;
+  align: center;
 }
 
 .button_drop {
-  display: block;
+  display: inline-block;
   float: left;
-  align: center;
-  margin: 15px;
+  margin: 2px;
   padding: 3px;
+  width: 60px;
+}
+
+.player1 {
+  background-image: url("../images/player1_KimYU.jpg");
+}
+
+.player2 {
+  background-image: url("../images/player2_Trump.jpg");
 }
