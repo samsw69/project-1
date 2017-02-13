@@ -1,15 +1,12 @@
 console.log('JS Connected!');
 $(() => {
-  // var playerOne = [];
-  // var playerTwo = [];
-  // var tally = 0;
-  // var isItPlayerTwoTurn = true;
-  // var currentColumn;
-  // var currentPlayerSlot;
-  // var changeSlotToString;
-  // var slotId;
+  var player1 = [];
+  var player2 = [];
+  var winner = '';
+  var player1Score = 0;
+  // let tally = 0;
   const $squares = $('li');
-  let currentPlayer = 'player1';
+  let currentPlayer = 'player1'; //how do we allow for player2?
   let columnIndex = 0;
   var columns = [
     [0, 7, 14, 21, 28, 35],
@@ -20,109 +17,6 @@ $(() => {
     [5, 12, 19, 26, 33, 40],
     [6, 13, 20, 27, 34, 41]
   ];
-
-  console.log(columns[0]);
-
-
-  function startGame() {
-    $('button').on('click', (e) => {
-      console.log('clicked');
-      // which column was clicked
-      columnIndex = $(e.target).index();
-
-      assignToken(currentPlayer, columnIndex);
-      currentPlayer = currentPlayer === 'player1' ? 'player2' : 'player1';
-    });
-    // el.addEventListener('onclick', checkPlayer());
-    // currentColumn(this.id);
-  }
-
-  startGame();
-
-  function assignToken(player, columnIndex) {
-    const squareIdx = columns[columnIndex].pop();
-    const $square = $squares.eq(squareIdx);
-    $square.addClass(player);
-
-    // if currentPlayer === player1 push squareIdx into player1 array
-    // else push squareIdx into player2 array
-    // checkForWin()
-  }
-
-    //   // while (isItPlayerTwoTurn === false) {
-
-//function checkPlayer(isItPlayerTwoTurn) {
-  // (isItPlayerTwoTurn = !isItPlayerTwoTurn);
-  //  console.log(isItPlayerTwoTurn);
-  // }
-
-  // function playToken() {
-  //   switch (currentColumn) {
-  //     case 'Drop1':
-  //       currentPlayerSlot = column1.pop();
-  //       break;
-  //     case 'Drop2':
-  //       currentPlayerSlot = column2.pop();
-  //       break;
-  //     case 'Drop3':
-  //       currentPlayerSlot = column3.pop();
-  //       break;
-  //     case 'Drop4':
-  //       currentPlayerSlot = column4.pop();
-  //       break;
-  //     case 'Drop5':
-  //       currentPlayerSlot = column5.pop();
-  //       break;
-  //     case 'Drop6':
-  //       currentPlayerSlot = column6.pop();
-  //       break;
-  //     case 'Drop7':
-  //       currentPlayerSlot = column7.pop();
-  //   }
-  // }
-
-  // playToken(currentPlayerSlot);
-
-
-  // function updateGameProgress(playerOne, playerTwo, currentPlayerSlot, isItPlayerTwoTurn) {
-  //   while (isItPlayerTwoTurn === false) {
-  //     Array.prototype.push.apply(playerOne, currentPlayerSlot);
-  //   }
-  //   while (isItPlayerTwoTurn === true) {
-  //     Array.prototype.push.apply(playerTwo, currentPlayerSlot);
-  //   }
-  // }
-
-  function checkForWin(playerToCheck) {
-    return allWinConditions.some((condition) => {
-      return condition.every((idx) => {
-        return playerToCheck.includes(idx);
-      });
-    });
-  }
-
-
-
-  // function declareWinner() {
-  // }
-  //
-  // function tally() {
-  //
-  // }
-  //
-  // function promptNextPlayer() {
-  //
-  // }
-  //
-  // function reset() {
-  // //clear playerOne and playerTwo score arrays
-  // //reset isItPlayerTwoTurn
-  // //reset currentColumn;
-  // //reset currentPlayerSlot;
-  // //reset changeSlotToString;
-  // //reset slotId;
-  // // change all tokens back to plain background and update the class back to original
-  // }
 
   const allWinConditions = [
     [0, 1, 2, 3],
@@ -205,25 +99,83 @@ $(() => {
     [3, 11, 19, 27]
   ];
 
+  console.log(columns[0,1,2,3,4,5]);
+
+
+  function startGame() {
+    $('button').on('click', (e) => {
+      console.log('clicked');
+      columnIndex = $(e.target).index();
+
+      assignToken(currentPlayer, columnIndex);
+      currentPlayer = currentPlayer === 'player1' ? 'player2' : 'player1';
+    }); //need to understand this better for use later on - how is player selected.
+  }
+
+  function assignToken(currentPlayer, columnIndex) {
+    const squareIdx = columns[columnIndex].pop();
+    const $square = $squares.eq(squareIdx);
+    $square.addClass(currentPlayer);
+    playerStatus(currentPlayer, squareIdx);
+  }
+
+  function playerStatus(currentPlayer, squareIdx) {
+    if (currentPlayer === 'player1') {
+      player1.push(squareIdx);
+    } else {
+      player2.push(squareIdx);
+    }
+    if (checkForWin()) {
+      updateScore(currentPlayer);
+    }
+  }
+
+  function checkForWin() {
+    const playerArrayToCheck = currentPlayer === 'player1' ? player1 : player2;
+
+    return allWinConditions.some((condition) => {
+      return condition.every((idx) => {
+        return playerArrayToCheck.includes(idx);
+      });
+    });
+  }
+
+
+  function updateScore(winner) {
+    console.log(winner);
+    if (winner === 'player1') {
+      player1Score++;
+      $('#player1Score').text(player1Score);
+    }
+    // document.getElementById('Player1Score').innerHTML = 'Player1'; //need to check this makes sense as I don't think all the variables have been satisifed!
+  }
+  startGame();
+  // checkForWin();
+
+  // function declareWinner(playerToCheck) {
+
+
+
+  // }
+  // }
+  //
+  // function tally() {
+  //
+  // }
+  //
+  // function promptNextPlayer() {
+  //
+  // }
+  //
+  // function reset() {
+  // //clear playerOne and playerTwo score arrays
+  // //reset isItPlayerTwoTurn
+  // //reset currentColumn;
+  // //reset currentPlayerSlot;
+  // //reset changeSlotToString;
+  // //reset slotId;
+  // // change all tokens back to plain background and update the class back to original
+  // }
+
+
 });
-
-
-//THIS WORKS TO GET CLICK IN BOX
-  // $boxes.on('click',function (e){  // recognises click and will be updated to adds players token
-  //   tally = tally + 1;
-  //   const box=$(e.target);
-  //   if (Math.abs(tally % 2) === 1){
-  //     box.text('X');
-  //   } else {
-  //     box.text('Y');
-  //     console.log($boxes); // trying to isolate the id for a box clicked
-  //   }
-
-      // addColour();
-      // $('#hide').click(function(){
-      //   $('#id').hide();
-      // });
-      //
-      // $('#show').click(function(){
-      //   $('#id').show();
-      // });
