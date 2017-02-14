@@ -1,14 +1,10 @@
 console.log('JS Connected!');
 $(() => {
-  var player1 = [];
-  var player2 = [];
-  var winner = '';
+
+  //these var do not reset
   var player1Score = 0;
-  // let tally = 0;
-  const $squares = $('li');
-  let currentPlayer = 'player1'; //how do we allow for player2?
-  let columnIndex = 0;
-  var columns = [
+  var player2Score = 0;
+  var columnsCopy = [
     [0, 7, 14, 21, 28, 35],
     [1, 8, 15, 22, 29, 36],
     [2, 9, 16, 23, 30, 37],
@@ -17,7 +13,6 @@ $(() => {
     [5, 12, 19, 26, 33, 40],
     [6, 13, 20, 27, 34, 41]
   ];
-
   const allWinConditions = [
     [0, 1, 2, 3],
     [1, 2, 3, 4],
@@ -99,25 +94,76 @@ $(() => {
     [3, 11, 19, 27]
   ];
 
+  //these var do RESET
+  var player1 = [];
+  var player2 = [];
+  let gameInProgress = true;
+  const $squares = $('li');
+  let currentPlayer = 'player1';
+  let columnIndex = 0;
+  var columns = columnsCopy;
+  let squareIdx = 0;
+
+
   console.log(columns[0,1,2,3,4,5]);
 
 
   function startGame() {
-    $('button').on('click', (e) => {
-      console.log('clicked');
-      columnIndex = $(e.target).index();
-
-      assignToken(currentPlayer, columnIndex);
-      currentPlayer = currentPlayer === 'player1' ? 'player2' : 'player1';
-    }); //need to understand this better for use later on - how is player selected.
+    if(gameInProgress === true) {
+      $('.dropButton').on('click', handleClick);
+      document.getElementById('AnnounceWinner').style.visibility='hidden';
+      document.getElementById('playAgain').style.visibility='hidden';
+    }
   }
 
-  function assignToken(currentPlayer, columnIndex) {
-    const squareIdx = columns[columnIndex].pop();
-    const $square = $squares.eq(squareIdx);
-    $square.addClass(currentPlayer);
-    playerStatus(currentPlayer, squareIdx);
+  function endGame() {
+    $('.dropButton').attr('disabled', true);
+    document.getElementById('AnnounceWinner').style.visibility='visible';
+    document.getElementById('playAgain').style.visibility='visible';
+    $('#playAgain').on('click', resetGame);
   }
+
+  function resetGame(){
+    columns =
+    [[0, 7, 14, 21, 28, 35],
+    [1, 8, 15, 22, 29, 36],
+    [2, 9, 16, 23, 30, 37],
+    [3, 10, 17, 24, 31, 38],
+    [4, 11, 18, 25, 32, 39],
+    [5, 12, 19, 26, 33, 40],
+    [6, 13, 20, 27, 34, 41]];
+    player1 = [];
+    player2 = [];
+    gameInProgress = true;
+    currentPlayer = 'player1';
+    columnIndex = 0;
+    squareIdx = [];
+    document.getElementById('AnnounceWinner').style.visibility='hidden';
+    document.getElementById('playAgain').style.visibility='hidden';
+    $('.dropButton').attr('disabled', false);
+
+    $squares.removeClass('player1 player2');
+    // handleClick();
+  }
+    // li.classList.remove('player1');
+    // li.classList.remove('player2');
+
+  function handleClick() {
+
+    console.log('clicked');
+    console.log(columnIndex);
+    columnIndex = $(this).index();
+
+    assignToken(currentPlayer, columnIndex);
+    currentPlayer = currentPlayer === 'player1' ? 'player2' : 'player1';
+  }
+
+    function assignToken(currentPlayer, columnIndex) {
+      squareIdx = columns[columnIndex].pop();
+      const $square = $squares.eq(squareIdx);
+      $square.addClass(currentPlayer);
+      playerStatus(currentPlayer, squareIdx);
+    }
 
   function playerStatus(currentPlayer, squareIdx) {
     if (currentPlayer === 'player1') {
@@ -139,34 +185,36 @@ $(() => {
       });
     });
   }
-
+///need to stop player taking move after a winner is foun
 
   function updateScore(winner) {
+    gameInProgress = false;
     console.log(winner);
+    console.log(gameInProgress);
+    endGame();
     if (winner === 'player1') {
       player1Score++;
       $('#player1Score').text(player1Score);
+      // if (winner === 'true') {
+      //   assignToken === false;
+      // }
     }
     // document.getElementById('Player1Score').innerHTML = 'Player1'; //need to check this makes sense as I don't think all the variables have been satisifed!
   }
+
+  // function playAgain() {
+  //   var askForReplay = document.createElement("p");alert;
+  // }
+
   startGame();
-  // checkForWin();
 
   // function declareWinner(playerToCheck) {
 
 
-
-  // }
-  // }
-  //
   // function tally() {
-  //
   // }
-  //
   // function promptNextPlayer() {
-  //
   // }
-  //
   // function reset() {
   // //clear playerOne and playerTwo score arrays
   // //reset isItPlayerTwoTurn

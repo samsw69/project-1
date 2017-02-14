@@ -1,35 +1,74 @@
 body {
   background: white;
-  height: 800px;
+  /*height: 800px;*/
+}
+
+header {
+  height: 70px;
+  margin: 5px;
 }
 
 h1 {
-  height: 60px;
+  height: 45px;
   /*background-color: gray;*/
   text-align: center;
-  font-family: 'Pangolin', cursive;
-  font-size: 50px
-}
-header {
-  height: 80px;
+  /*font-family: 'Barrio', cursive;*/
+  font-size: 60px;
+  color: purple;
+  font-family: 'Monoton', cursive;
+  padding-bottom: : 20px;
 
 }
+
+h2 {
+  text-align: center;
+  /*font-family: 'Pangolin', cursive;*/
+  font-family: 'Barrio', cursive;
+  /*font-family: 'Monoton', cursive;*/
+}
+
+
 
 button {
-align-self: center;
+/*align-self: center;*/
+}
+
+.button_drop {
+  text-align: center;
+}
+
+.gameBoard {
+  float: left;
+  width: 70%;
+}
+
+.dropButton {
+  padding: 22px;
+  font: white;
+  font-weight: bold;
+  font-size: 30px;
+  /*width: 60px;*/
+  color: white;
+  background-color: black;
+
 }
 
 .leftSide, .rightSide {
-  width: 175px;
+  width: 15%;
   height: 800px;
-  background-color: orange;
-  font-size: 12;
-  color: black;
+  /*background-color: orange;*/
+  font-size: 20px;
+  color: white;
   float: left;
 }
 
+.clearfix {
+  overflow: auto;
+  zoom: 1;
+}
+
 .grid {
-  float: left;
+  /*float: left;*/
 }
 
 .squares {
@@ -43,53 +82,76 @@ main {
   height: 800px;
   margin: 0 auto;
   background-image: url("../images/ink.jpg");
-  background-position: right top;
-}
+  background-position: center;
+  background-size: cover;
+  color: white;
+  background-repeat: no-repeat;
+  }
 
-.clearfix {
-  overflow: auto;
-  zoom: 1;
-}
+  #AnnounceWinner {
+  font-family: 'Barrio', cursive;
+  font-size: 35px;
+  color: white;
+  text-align: center;
+  }
 
 ul {
-  display: inline-block;
-  width: 528px;
-  margin: 50px 10px;
+  display: block;
+  width: 506px;
+  margin: 0px auto;
   border-spacing: 0px 0px;
   padding: 0;
 }
 
 
 li {
-  display: inline-block;
+  display: inline;
   width: 60px;
   float: left;
   height: 60px;
   border: 1px solid white;
-  text-align: center;
+  /*text-align: center;*/
   padding: 3px;
   margin: 2px;
 }
 
 #reset_btn, #instructions  {
   float: right;
-  margin: 10px;
-  padding: 10px;
+  margin: 0px;
+  padding: 0px;
   align: center;
 }
 
-.button_drop {
-  display: inline-block;
-  float: left;
-  margin: 2px;
-  padding: 3px;
-  width: 60px;
-}
-
 .player1 {
-  background-image: url("../images/player1_KimYU.jpg");
+  background-image: url("../images/Player1_Tom.png");
+  background-size: cover;
+  /*height, width: 56px;*/
 }
 
 .player2 {
-  background-image: url("../images/player2_Trump.jpg");
+  background-image: url("../images/Player2_Hoff.png");
+  /*height, width: 56px;*/
+  background-size: cover;
+}
+
+#player1Score, #player2Score {
+  font-family: 'Comfortaa', cursive;
+  font-size: 60px;
+  color: white;
+  font-weight: bold;
+  text-align: center;
+
+  }
+
+#playAgain {
+  display: block;
+  width: 80px;
+  height: 60px;
+  color: white;
+  background-color: blue;
+  font-family: 'Pangolin', cursive;
+  /*padding: 1px;*/
+  margin: 0 auto;
+  font-size: 30px;
+  text-align: center;
 }
