@@ -149,10 +149,15 @@ $(() => {
 //find error for DOM event handler - get smaller mp3 and cut to size
   function playBarry() {
     var audio = document.getElementById('audio');
-    audio.src = '/audio/barry.wav';
+    audio.src = 'audio/barryW.wav';
     audio.play();
   }
 
+  function winnerSong() {
+    var audio = document.getElementById('audio');
+    audio.src = 'audio/TheBest.wav';
+    audio.play();
+  }
 
   // function stopBarry() {
   //   var audio = document.getElementById('audio');
@@ -170,9 +175,11 @@ $(() => {
 
   function endGame() {                  //disables drop buttons
     $('.dropButton').attr('disabled', true);
+
     document.getElementById('announceWinner').style.visibility='visible'; //announces there is a winner
     document.getElementById('playAgain').style.visibility='visible';
     $('#playAgain').on('click', resetGame);     //displays the play again button,which also triggers reset conditions
+    winnerSong();
   }
 
   function resetGame() {        //resets all variables
