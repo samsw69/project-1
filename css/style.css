@@ -8,6 +8,97 @@ header {
   margin: 5px;
 }
 
+/*.welcomeLink {
+-webkit-border-radius: 60;
+  -moz-border-radius: 60;
+  border-radius: 60px;
+  font-family: Courier New;
+  color: #ffffff;
+  font-size: 30px;
+  background: #1171b0;
+  padding: 10px 20px 10px 20px;
+  text-decoration: none;
+}*/
+
+.btn:hover {
+  background: #00bd9e;
+  text-decoration: none;
+}
+
+.welcomeLink {
+  text-color: red;
+  font-size: 30px;
+  font-family: 'Comfortaa', cursive;
+  text-align: center;
+  display: block;
+}
+
+.selectHunkDiv {
+  width: 100%;
+  height: 100px;
+  margin: auto;
+  float: left;
+  display: block;
+  overflow: auto;
+}
+
+
+.selectHunkUl {
+  width: 100%;
+  height: 100px;
+  margin: auto;
+  float: left;
+  display: inline-flex;;
+}
+
+.welcome {
+  font-family: 'Comfortaa', cursive;
+  font-size: 30px;
+  color: white;
+  text-align: center;
+  padding: 15px;
+}
+
+#Selleck {
+  background-image: url("../images/Player1_Tom.png");
+  background-size: cover;
+  height: 100px;
+  width: 100px;
+  border: 1px solid white;
+  padding: 10px;
+  margin: 0 auto;
+}
+
+#Arnie {
+  background-image: url("../images/Arnie.png");
+  background-size: cover;
+  height: 100px;
+  width: 100px;
+  border: 1px solid white;
+  padding: 10px;
+  margin: 0 auto;
+}
+
+#Clooney {
+  background-image: url("../images/Clooney.png");
+  background-size: cover;
+  height: 100px;
+  width: 100px;
+  border: 1px solid white;
+  padding: 10px;
+  margin: 0 auto;
+}
+
+#Hoff {
+  background-image: url("../images/Player2_Hoff.png");
+  background-size: cover;
+  height: 100px;
+  width: 100px;
+  border: 1px solid white;
+  padding: 10px;
+  margin: 0 auto;
+}
+
 h1 {
   height: 45px;
   /*background-color: gray;*/
@@ -17,7 +108,6 @@ h1 {
   color: purple;
   font-family: 'Monoton', cursive;
   padding-bottom: : 20px;
-
 }
 
 h2 {
@@ -25,12 +115,8 @@ h2 {
   /*font-family: 'Pangolin', cursive;*/
   font-family: 'Barrio', cursive;
   /*font-family: 'Monoton', cursive;*/
-}
-
-
-
-button {
-/*align-self: center;*/
+  font-size: 30px;
+  padding: 20px;
 }
 
 .button_drop {
@@ -50,7 +136,6 @@ button {
   /*width: 60px;*/
   color: white;
   background-color: black;
-
 }
 
 .leftSide, .rightSide {
@@ -74,21 +159,20 @@ button {
 .squares {
   float: left;
   height, width: 56px;
-  background-image: url("../images/blank.gif");
 }
 
 main {
   max-width: 900px;
   height: 800px;
   margin: 0 auto;
-  background-image: url("../images/ink.jpg");
+  background-image: url("../images/beach.png");
   background-position: center;
   background-size: cover;
   color: white;
   background-repeat: no-repeat;
   }
 
-  #AnnounceWinner {
+  #announceWinner {
   font-family: 'Barrio', cursive;
   font-size: 35px;
   color: white;
@@ -103,7 +187,6 @@ ul {
   padding: 0;
 }
 
-
 li {
   display: inline;
   width: 60px;
@@ -115,43 +198,42 @@ li {
   margin: 2px;
 }
 
-#reset_btn, #instructions  {
+/*#reset_btn, #instructions  {
   float: right;
   margin: 0px;
   padding: 0px;
   align: center;
-}
+}*/
 
+/***need to adapt for selection*/
 .player1 {
   background-image: url("../images/Player1_Tom.png");
   background-size: cover;
   /*height, width: 56px;*/
 }
 
+/***need to adapt for selection*/
 .player2 {
   background-image: url("../images/Player2_Hoff.png");
   /*height, width: 56px;*/
   background-size: cover;
 }
 
-#player1Score, #player2Score {
+/*#player1Score, #player2Score {
   font-family: 'Comfortaa', cursive;
   font-size: 60px;
   color: white;
   font-weight: bold;
   text-align: center;
+  }*/
 
-  }
-
-#playAgain {
+/*#playAgain {
   display: block;
-  width: 80px;
-  height: 60px;
+  height: 50px;
   color: white;
-  background-color: blue;
-  font-family: 'Pangolin', cursive;
-  /*padding: 1px;*/
+  background-color: #0a12b1;
+  font-family: 'Barrio', cursive;
   margin: 0 auto;
-  font-size: 30px;
+  font-size: 25px;
   text-align: center;
-}
+}*/

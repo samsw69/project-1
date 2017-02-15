@@ -111,19 +111,19 @@ $(() => {
   function startGame() {
     if(gameInProgress === true) {
       $('.dropButton').on('click', handleClick);
-      document.getElementById('AnnounceWinner').style.visibility='hidden';
+      document.getElementById('announceWinner').style.visibility='hidden';
       document.getElementById('playAgain').style.visibility='hidden';
     }
   }
 
   function endGame() {
     $('.dropButton').attr('disabled', true);
-    document.getElementById('AnnounceWinner').style.visibility='visible';
+    document.getElementById('announceWinner').style.visibility='visible';
     document.getElementById('playAgain').style.visibility='visible';
     $('#playAgain').on('click', resetGame);
   }
 
-  function resetGame(){
+  function resetGame() {
     columns =
     [[0, 7, 14, 21, 28, 35],
     [1, 8, 15, 22, 29, 36],
@@ -138,32 +138,27 @@ $(() => {
     currentPlayer = 'player1';
     columnIndex = 0;
     squareIdx = [];
-    document.getElementById('AnnounceWinner').style.visibility='hidden';
+    
+    document.getElementById('announceWinner').style.visibility='hidden';
     document.getElementById('playAgain').style.visibility='hidden';
     $('.dropButton').attr('disabled', false);
-
     $squares.removeClass('player1 player2');
-    // handleClick();
   }
-    // li.classList.remove('player1');
-    // li.classList.remove('player2');
 
   function handleClick() {
-
     console.log('clicked');
     console.log(columnIndex);
     columnIndex = $(this).index();
-
     assignToken(currentPlayer, columnIndex);
     currentPlayer = currentPlayer === 'player1' ? 'player2' : 'player1';
   }
 
-    function assignToken(currentPlayer, columnIndex) {
-      squareIdx = columns[columnIndex].pop();
-      const $square = $squares.eq(squareIdx);
-      $square.addClass(currentPlayer);
-      playerStatus(currentPlayer, squareIdx);
-    }
+  function assignToken(currentPlayer, columnIndex) {
+    squareIdx = columns[columnIndex].pop();
+    const $square = $squares.eq(squareIdx);
+    $square.addClass(currentPlayer);
+    playerStatus(currentPlayer, squareIdx);
+  }
 
   function playerStatus(currentPlayer, squareIdx) {
     if (currentPlayer === 'player1') {
@@ -178,14 +173,12 @@ $(() => {
 
   function checkForWin() {
     const playerArrayToCheck = currentPlayer === 'player1' ? player1 : player2;
-
     return allWinConditions.some((condition) => {
       return condition.every((idx) => {
         return playerArrayToCheck.includes(idx);
       });
     });
   }
-///need to stop player taking move after a winner is foun
 
   function updateScore(winner) {
     gameInProgress = false;
@@ -195,35 +188,13 @@ $(() => {
     if (winner === 'player1') {
       player1Score++;
       $('#player1Score').text(player1Score);
-      // if (winner === 'true') {
-      //   assignToken === false;
-      // }
+    } else {
+      if (winner === 'player2') {
+        player2Score++;
+        $('#player2Score').text(player2Score);
+      }
     }
-    // document.getElementById('Player1Score').innerHTML = 'Player1'; //need to check this makes sense as I don't think all the variables have been satisifed!
   }
 
-  // function playAgain() {
-  //   var askForReplay = document.createElement("p");alert;
-  // }
-
   startGame();
-
-  // function declareWinner(playerToCheck) {
-
-
-  // function tally() {
-  // }
-  // function promptNextPlayer() {
-  // }
-  // function reset() {
-  // //clear playerOne and playerTwo score arrays
-  // //reset isItPlayerTwoTurn
-  // //reset currentColumn;
-  // //reset currentPlayerSlot;
-  // //reset changeSlotToString;
-  // //reset slotId;
-  // // change all tokens back to plain background and update the class back to original
-  // }
-
-
 });
