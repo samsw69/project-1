@@ -95,6 +95,13 @@ $(() => {
   ];
 
   //these var do RESET
+  //get picture for each player token
+  var $player1Pic = $('.imgHolder1');
+  var $player2Pic = $('.imgHolder2');
+  var hunk1Id;
+  var hunk2Id;
+
+//game play
   var player1 = [];
   var player2 = [];
   let gameInProgress = true;
@@ -107,12 +114,46 @@ $(() => {
 
   console.log(columns[0,1,2,3,4,5]);
 
+//select hunk for player token
+
+
+  $('.hunkButton').on('click', selectHunk);
+  $('.play').on('click', hideWelcome);
+
+  function hideWelcome() {
+    $('.welcome-overlay').hide();
+  }
+
+  // function audio()  {
+  //   var audio = $("/audio/Barry White.mp3")[0];
+  //   $("selectHunkDiv").mouseenter(function() {
+  //   audio.play();
+  // })
+
+
+  // window.addEventListener('DOMContentLoaded', () => {
+  //   const audio = document.querySelector('audio');
+  //   const clickBtn = document.querySelector('button');
+  //   clickBtn.addEventListener('click', (e) => {
+  //   });
+  // });
+
+
+  function selectHunk(){
+
+    if (hunk1Id) {
+      hunk2Id = $(this).attr('data-hunk');
+      $player2Pic.addClass(hunk2Id);
+      $('.selectHunkUl').hide();
+    } else {
+      hunk1Id = $(this).attr('data-hunk');
+      $player1Pic.addClass(hunk1Id);
+    }
+  }
 
   function startGame() {
     if(gameInProgress === true) {
       $('.dropButton').on('click', handleClick);
-      document.getElementById('announceWinner').style.visibility='hidden';
-      document.getElementById('playAgain').style.visibility='hidden';
     }
   }
 
@@ -138,11 +179,11 @@ $(() => {
     currentPlayer = 'player1';
     columnIndex = 0;
     squareIdx = [];
-    
     document.getElementById('announceWinner').style.visibility='hidden';
     document.getElementById('playAgain').style.visibility='hidden';
     $('.dropButton').attr('disabled', false);
-    $squares.removeClass('player1 player2');
+    $squares.removeClass(hunk1Id);
+    $squares.removeClass(hunk2Id);
   }
 
   function handleClick() {
@@ -156,7 +197,8 @@ $(() => {
   function assignToken(currentPlayer, columnIndex) {
     squareIdx = columns[columnIndex].pop();
     const $square = $squares.eq(squareIdx);
-    $square.addClass(currentPlayer);
+    const classToAdd = currentPlayer === 'player1' ? hunk1Id : hunk2Id;
+    $square.addClass(classToAdd);
     playerStatus(currentPlayer, squareIdx);
   }
 
