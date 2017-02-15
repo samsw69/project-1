@@ -13,6 +13,7 @@ $(() => {
     [5, 12, 19, 26, 33, 40],
     [6, 13, 20, 27, 34, 41]
   ];
+
   const allWinConditions = [
     [0, 1, 2, 3],
     [1, 2, 3, 4],
@@ -95,13 +96,12 @@ $(() => {
   ];
 
   //these var do RESET
-  //get picture for each player token
   var $player1Pic = $('.imgHolder1');
   var $player2Pic = $('.imgHolder2');
   var hunk1Id;
   var hunk2Id;
 
-//game play
+  //var for game play - grid
   var player1 = [];
   var player2 = [];
   let gameInProgress = true;
@@ -111,26 +111,48 @@ $(() => {
   var columns = columnsCopy;
   let squareIdx = 0;
 
+  // console.log(columns[0,1,2,3,4,5]);
 
-  console.log(columns[0,1,2,3,4,5]);
 
-//select hunk for player token
-
-  $('.hunkButton').on('mouseover', playBarry);
-  // $('.hunkButton').on('mouseout', stopBarry);
-  $('.hunkButton').on('click', selectHunk);
   $('.play').on('click', hideWelcome);
+  $('.instructions').on('click', hideInstructions);
+  //select hunk for player token
+  $('.hunkButton').on('mouseover', playBarry);
+  // $('.hunkButton').on('mouseout', stopBarry); //check syntax for mouse out
+  $('.hunkButton').on('click', selectHunk);
+
+
+  //allows player to select the token to represent their game play
+  function selectHunk(){
+    if (hunk1Id) {
+      hunk2Id = $(this).attr('data-hunk');  //data-hunk allows extra classification for later use
+      $player2Pic.addClass(hunk2Id);  //applies selected token to player
+      $('.selectHunkUl').hide();
+    } else {
+      hunk1Id = $(this).attr('data-hunk');
+      $player1Pic.addClass(hunk1Id);
+      //if image is not selected, but button is, 'insist' on image selection before proceeding
+    }
+  }
+
 
 
   function hideWelcome() {
     $('.welcome-overlay').hide();
   }
 
+  function hideInstructions() {
+    // document.getElementByClass('instructions').style.visibility='hidden';
+    $('.instructions').hide(); //set up in css for .visible / see welcome-overlay
+  }
+
+//find error for DOM event handler - get smaller mp3 and cut to size
   function playBarry() {
     var audio = document.getElementById('audio');
     audio.src = '/audio/barry.wav';
     audio.play();
   }
+
 
   // function stopBarry() {
   //   var audio = document.getElementById('audio');
@@ -138,33 +160,23 @@ $(() => {
   //   audio.stop();
   // }
 
-  function selectHunk(){
 
-    if (hunk1Id) {
-      hunk2Id = $(this).attr('data-hunk');
-      $player2Pic.addClass(hunk2Id);
-      $('.selectHunkUl').hide();
-    } else {
-      hunk1Id = $(this).attr('data-hunk');
-      $player1Pic.addClass(hunk1Id);
-    }
-  }
 
-  function startGame() {
+  function startGame() {                //makes drop buttons available to play
     if(gameInProgress === true) {
       $('.dropButton').on('click', handleClick);
     }
   }
 
-  function endGame() {
+  function endGame() {                  //disables drop buttons
     $('.dropButton').attr('disabled', true);
-    document.getElementById('announceWinner').style.visibility='visible';
+    document.getElementById('announceWinner').style.visibility='visible'; //announces there is a winner
     document.getElementById('playAgain').style.visibility='visible';
-    $('#playAgain').on('click', resetGame);
+    $('#playAgain').on('click', resetGame);     //displays the play again button,which also triggers reset conditions
   }
 
-  function resetGame() {
-    columns =
+  function resetGame() {        //resets all variables
+    columns =   //resets grid array so win cond and token placement is valid
     [[0, 7, 14, 21, 28, 35],
     [1, 8, 15, 22, 29, 36],
     [2, 9, 16, 23, 30, 37],
@@ -178,6 +190,7 @@ $(() => {
     currentPlayer = 'player1';
     columnIndex = 0;
     squareIdx = [];
+    //hides the winner announcement, play again button, enables drop button and removes classes in grid to denote token placement
     document.getElementById('announceWinner').style.visibility='hidden';
     document.getElementById('playAgain').style.visibility='hidden';
     $('.dropButton').attr('disabled', false);
@@ -185,22 +198,28 @@ $(() => {
     $squares.removeClass(hunk2Id);
   }
 
+  //identifies the last available index in an array to place token
   function handleClick() {
     console.log('clicked');
     console.log(columnIndex);
-    columnIndex = $(this).index();
-    assignToken(currentPlayer, columnIndex);
+    columnIndex = $(this).index();  //grabs the column array which provides the available index
+    assignToken(currentPlayer, columnIndex); //asigns player to the index
     currentPlayer = currentPlayer === 'player1' ? 'player2' : 'player1';
   }
 
   function assignToken(currentPlayer, columnIndex) {
+    //checks for the column array, and pops last indice
     squareIdx = columns[columnIndex].pop();
+    //saves result in var for use
     const $square = $squares.eq(squareIdx);
+    // assigns player in action to the square
     const classToAdd = currentPlayer === 'player1' ? hunk1Id : hunk2Id;
+    //and assigns their token
     $square.addClass(classToAdd);
     playerStatus(currentPlayer, squareIdx);
+    //***try to add some transition dowm into slots ** do this last**
   }
-
+  //updates the player progress by pushing last square placed (index) to players array
   function playerStatus(currentPlayer, squareIdx) {
     if (currentPlayer === 'player1') {
       player1.push(squareIdx);
@@ -211,16 +230,20 @@ $(() => {
       updateScore(currentPlayer);
     }
   }
-
+  // checks array as it stands against all possible win conditions
   function checkForWin() {
+    // confirms which player to check
     const playerArrayToCheck = currentPlayer === 'player1' ? player1 : player2;
+    //finds all win conditions with some of the numbers in player array
     return allWinConditions.some((condition) => {
+      //then returns any which have exact match of any numbers in player array
       return condition.every((idx) => {
+        //confirms if there is a winner on turn just played
         return playerArrayToCheck.includes(idx);
       });
     });
   }
-
+  //logs scores on the player scoreboard
   function updateScore(winner) {
     gameInProgress = false;
     console.log(winner);

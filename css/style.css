@@ -16,18 +16,6 @@ h3 {
   font-weight: bold;
   text-align: center;
 }
-/*.btn:hover {
-  background: #00bd9e;
-  text-decoration: none;
-}*/
-
-/*.play {
-  text-color: red;
-  font-size: 30px;
-  font-family: 'Comfortaa', cursive;
-  text-align: center;
-  display: block;
-}*/
 
 .selectHunkDiv {
   width: 100%;
@@ -106,6 +94,7 @@ h2 {
 
 .button_drop {
   text-align: center;
+  /*visibility: hidden;*/
 }
 
 .gameBoard {
@@ -165,12 +154,30 @@ main {
     background-size: cover;
   }
 
+/*check if this has correct properties for hiding until button clicked*/
+  .instructions {
+    font-family: 'Barrio', cursive;
+    font-size: 25px;
+    color: white;
+    text-align: center;
+    height: 20px;
+    visibility: visible;
+    position: absolute;
+    top: 0;
+    left: 15%;
+    width: 70%;
+    height: 100%;
+    background-image: url("../images/beach.png");
+    background-position: center;
+    background-size: cover;
+  }
+
   #announceWinner {
     font-family: 'Barrio', cursive;
     font-size: 35px;
     color: white;
     text-align: center;
-    height: 20px
+    height: 20px;
     visibility: hidden;
   }
 

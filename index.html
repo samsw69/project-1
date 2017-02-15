@@ -3,16 +3,14 @@
 
   <head>
     <meta charset="utf-8">
-    <title>Connect4</title>
+    <title>Connect Phwoar</title>
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
     <link rel="stylesheet" href="css/style.css">
     <script src="http://code.jquery.com/jquery-3.1.1.min.js"></script>
     <script src="js/app.js" charset="utf-8"></script>
     <link href="https://fonts.googleapis.com/css?family=Barrio|Monoton|Pangolin|Comfortaa" rel="stylesheet">
 
-
   </head>
-
   <body>
 
     <header>
@@ -29,22 +27,7 @@
           <p>Match 4 hunks in a row</p>
           <p>horizontally, vertically or diagonally to win!</p>
           <p>Select your hunk...</p>
-
         </div>
-        <!-- <script>
-          $( "li" ).hover(
-            function() {
-              $( this ).append( $( "<span> ***</span>" ) );
-            }, function() {
-              $( this ).find( "span:last" ).remove();
-            }
-          );
-
-          $( "li.fade" ).hover(function() {
-            $( this ).fadeOut( 100 );
-            $( this ).fadeIn( 500 );
-          });
-          </script> -->
 
         <div class="selectHunkDiv">
           <ul class="selectHunkUl">
@@ -61,11 +44,17 @@
       </div>
 
       <div class="leftSide">
+        <!-- check out input for Player name -->
         <h2>Player 1 Score</h2>
-        <!-- <need to add image of player1Pic here? -->
         <div class="imgHolder1"></div>
-        <br>
+        <br><br>
         <h3 id="player1Score"></h3>
+      </div>
+
+      <!-- try this for overlay with instruction -->
+      <div class="instructions">
+        <p>Click on the arrows above to drop your hunk directly into a slot below...</p>
+        <button class="ok">OK - got it!</button>
       </div>
 
       <div class="gameBoard">
@@ -78,9 +67,11 @@
           <button class="dropButton"><span>&#8595;</span></button>
           <button class="dropButton"><span>&#8595;</span></button>
         </div>
+
         <div>
           <p id="announceWinner">Hey, we have a Winner!</p>
         </div>
+
         <div class="grid">
           <img class="squares">
           <ul>
@@ -128,25 +119,19 @@
             <li class="" id="41"></li>
           </ul>
         </div>
+
         <div class="playAgainButtons">
           <button id="playAgain">Play again?</button>
         </div>
       </div>
 
-
-
-
-
       <div class="rightSide">
         <h2>Player 2 Score</h2>
-        <!-- <need to add image of player1Pic here? -->
+        <!-- check out input for Player name -->
         <div class="imgHolder2"></div>
         <br><br>
         <h3 id="player2Score"></h3>
       </div>
-
-
-
 
     </main>
   </body>
