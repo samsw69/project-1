@@ -156,18 +156,18 @@ main {
 
 /*check if this has correct properties for hiding until button clicked*/
   .instructions {
-    font-family: 'Barrio', cursive;
-    font-size: 25px;
+    font-family: 'Comfortaa', cursive;
+    font-size: 20px;
     color: white;
     text-align: center;
     height: 20px;
     visibility: visible;
     position: absolute;
-    top: 0;
+    top: 10%;
     left: 15%;
     width: 70%;
     height: 100%;
-    background-image: url("../images/beach.png");
+    /*background-image: url("../images/beach.png");*/
     background-position: center;
     background-size: cover;
   }
@@ -208,7 +208,7 @@ li {
   text-align: center;
   }
 
-#playAgain, .play {
+#playAgain, .play, .ok {
   display: block;
   height: 50px;
   color: white;
