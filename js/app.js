@@ -116,28 +116,27 @@ $(() => {
 
 //select hunk for player token
 
-
+  $('.hunkButton').on('mouseover', playBarry);
+  // $('.hunkButton').on('mouseout', stopBarry);
   $('.hunkButton').on('click', selectHunk);
   $('.play').on('click', hideWelcome);
+
 
   function hideWelcome() {
     $('.welcome-overlay').hide();
   }
 
-  // function audio()  {
-  //   var audio = $("/audio/Barry White.mp3")[0];
-  //   $("selectHunkDiv").mouseenter(function() {
-  //   audio.play();
-  // })
+  function playBarry() {
+    var audio = document.getElementById('audio');
+    audio.src = '/audio/barry.wav';
+    audio.play();
+  }
 
-
-  // window.addEventListener('DOMContentLoaded', () => {
-  //   const audio = document.querySelector('audio');
-  //   const clickBtn = document.querySelector('button');
-  //   clickBtn.addEventListener('click', (e) => {
-  //   });
-  // });
-
+  // function stopBarry() {
+  //   var audio = document.getElementById('audio');
+  //   audio.src = '/audio/barry.wav';
+  //   audio.stop();
+  // }
 
   function selectHunk(){
 
