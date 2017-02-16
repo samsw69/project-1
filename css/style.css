@@ -3,76 +3,23 @@ body {
   height: auto;
 }
 
+main {
+  /*max-width: 900px;*/
+  height: 800px;
+  margin: 0 auto;
+  background-image: url("../images/beach.png");
+  background-position: center;
+  background-size: cover;
+  color: white;
+  background-repeat: no-repeat;
+  position: relative;
+}
+
 header {
   height: 70px;
   margin: 20px;
   margin-top: -30px;
 }
-
-h3 {
-  font-family: 'Comfortaa', cursive;
-  font-size: 60px;
-  color: white;
-  font-weight: bold;
-  text-align: center;
-  border: 2px;
-  border-color: white;
-}
-
-.selectHunkDiv {
-  width: 100%;
-  height: 100px;
-  margin: auto;
-  margin-bottom: 25px;
-  float: left;
-  display: block;
-  overflow: auto;
-}
-
-.selectHunkUl {
-  width: 100%;
-  height: 100px;
-  margin: auto;
-  float: left;
-  display: inline-flex;;
-}
-
-.welcome {
-  font-family: 'Comfortaa', cursive;
-  font-size: 30px;
-  color: white;
-  text-align: center;
-  padding: 15px;
-}
-
-.Selleck {
-  background-image: url("../images/Player1_Tom.png");
-}
-
-.Arnie {
-  background-image: url("../images/Arnie.png");
-}
-
-.Clooney {
-  background-image: url("../images/Clooney.png");
-}
-
-.Hoff {
-  background-image: url("../images/Player2_Hoff.png");
-}
-
-.Selleck, .Arnie, .Clooney, .Hoff {
-  border: 1px solid white;
-  background-size: cover;
-}
-
-.hunkButton, .imgHolder1, .imgHolder2 {
-  height: 100px;
-  width: 100px;
-  padding: 10px;
-  margin: 0 auto;
-}
-
 
 h1 {
   height: 45px;
@@ -94,14 +41,102 @@ h2 {
   padding: 20px;
 }
 
-.button_drop {
+h3 {
+  font-family: 'Comfortaa', cursive;
+  font-size: 60px;
+  color: white;
+  font-weight: bold;
   text-align: center;
-  /*visibility: hidden;*/
+  border: 2px;
+  border-color: white;
 }
 
-.gameBoard {
-  float: left;
+.welcome {
+  font-family: 'Comfortaa', cursive;
+  font-size: 30px;
+  color: white;
+  text-align: center;
+  padding: 15px;
+}
+
+.welcome-overlay {
+  position: absolute;
+  top: 0;
+  left: 15%;
   width: 70%;
+  height: 100%;
+  background-image: url("../images/beach.png");
+  background-position: center;
+  background-size: cover;
+}
+
+.instructions {
+  font-family: 'Comfortaa', cursive;
+  font-size: 20px;
+  color: white;
+  text-align: center;
+  height: 20px;
+  visibility: visible;
+  position: absolute;
+  top: 10%;
+  left: 15%;
+  width: 70%;
+  height: 100%;
+  /*background-image: url("../images/beach.png");*/
+  background-position: center;
+  background-size: cover;
+}
+
+.selectHunkDiv {
+  width: 100%;
+  height: 100px;
+  margin: auto;
+  margin-bottom: 25px;
+  float: left;
+  display: block;
+  overflow: auto;
+}
+
+.selectHunkUl {
+  width: 100%;
+  height: 100px;
+  margin: auto;
+  float: left;
+  display: inline-flex;;
+  visibility: visible;
+  /*check if visible works*/
+}
+
+.Selleck, .Arnie, .Clooney, .Hoff {
+  border: 1px solid white;
+  background-size: cover;
+}
+
+.Selleck {
+  background-image: url("../images/Player1_Tom.png");
+}
+
+.Arnie {
+  background-image: url("../images/Arnie.png");
+}
+
+.Clooney {
+  background-image: url("../images/Clooney.png");
+}
+
+.Hoff {
+  background-image: url("../images/Player2_Hoff.png");
+}
+
+.gBuster {
+  background-image: url("../images/gBuster.png");
+}
+
+.hunkButton, .imgHolder1, .imgHolder2 {
+  height: 100px;
+  width: 100px;
+  padding: 10px;
+  margin: 0 auto;
 }
 
 .dropButton {
@@ -114,6 +149,15 @@ h2 {
   background-color: rgba(20, 122, 49, 0.35);
 }
 
+.button_drop {
+  text-align: center;
+  /*visibility: hidden;*/
+}
+
+.gameBoard {
+  float: left;
+  width: 70%;
+}
 
 .leftSide, .rightSide {
   width: 15%;
@@ -128,68 +172,6 @@ h2 {
   overflow: auto;
   zoom: 1;
 }
-
-.squares {
-  float: left;
-  height, width: 56px;
-}
-
-.squares:.move-down {
-    transform: translate(0,350px);
-    -webkit-transform: translate(0,350px);
-    -o-transform: translate(0,350px);
-    -moz-transform: translate(0,350px);
-}
-
-main {
-  /*max-width: 900px;*/
-  height: 800px;
-  margin: 0 auto;
-  background-image: url("../images/beach.png");
-  background-position: center;
-  background-size: cover;
-  color: white;
-  background-repeat: no-repeat;
-  position: relative;
-}
-
-  .welcome-overlay {
-    position: absolute;
-    top: 0;
-    left: 15%;
-    width: 70%;
-    height: 100%;
-    background-image: url("../images/beach.png");
-    background-position: center;
-    background-size: cover;
-  }
-
-/*check if this has correct properties for hiding until button clicked*/
-  .instructions {
-    font-family: 'Comfortaa', cursive;
-    font-size: 20px;
-    color: white;
-    text-align: center;
-    height: 20px;
-    visibility: visible;
-    position: absolute;
-    top: 10%;
-    left: 15%;
-    width: 70%;
-    height: 100%;
-    /*background-image: url("../images/beach.png");*/
-    background-position: center;
-    background-size: cover;
-  }
-
-  #announceWinner {
-    font-family: 'Barrio', cursive;
-    font-size: 35px;
-    color: white;
-    text-align: center;
-    height: 20px;
-    visibility: hidden;
-  }
 
 ul {
   display: block;
@@ -210,6 +192,18 @@ li {
   margin: 2px;
 }
 
+.squares {
+  float: left;
+  height, width: 56px;
+}
+
+.squares:.move-down {
+  transform: translate(0,350px);
+  -webkit-transform: translate(0,350px);
+  -o-transform: translate(0,350px);
+  -moz-transform: translate(0,350px);
+}
+
 #player1Score, #player2Score {
   font-family: 'Comfortaa', cursive;
   font-size: 60px;
@@ -220,6 +214,15 @@ li {
   border-bottom-width: thick;
   border-color: white;
   }
+
+#announceWinner {
+  font-family: 'Barrio', cursive;
+  font-size: 35px;
+  color: white;
+  text-align: center;
+  height: 20px;
+  visibility: hidden;
+}
 
 #playAgain, .play, .ok {
   display: block;

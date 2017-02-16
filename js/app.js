@@ -111,14 +111,10 @@ $(() => {
   var columns = columnsCopy;
   let squareIdx = 0;
 
-  // console.log(columns[0,1,2,3,4,5]);
-
-
   $('.play').on('click', hideWelcome);
   $('.instructions').on('click', hideInstructions);
   //select hunk for player token
   $('.hunkButton').on('mouseover', playBarry);
-  // $('.hunkButton').on('mouseout', stopBarry); //check syntax for mouse out
   $('.hunkButton').on('click', selectHunk);
 
 
@@ -131,9 +127,25 @@ $(() => {
     } else {
       hunk1Id = $(this).attr('data-hunk');
       $player1Pic.addClass(hunk1Id);
-      //if image is not selected, but button is, 'insist' on image selection before proceeding
+    }
+
+    // if (hunk2Id === hunk1Id) {
+    //   $(hunk2Id).removeClass().addClass('gBuster');
+    // }
+    if($player1Pic.hasClass('Clooney')) {
+      $('.Clooney').attr('disabled', true);
+    } else if($player1Pic.hasClass('Selleck')) {
+      $('.Selleck').attr('disabled', true);
+    } else if($player1Pic.hasClass('Hoff')) {
+      $('.Hoff').attr('disabled', true);
+    } else {
+      $('.Arnie').attr('disabled', true);
     }
   }
+
+
+      //if image is not selected, but button is, 'insist' on image selection before proceeding
+
 
   function hideWelcome() {
     $('.welcome-overlay').hide();
@@ -156,22 +168,24 @@ $(() => {
     audio.play();
   }
 
-  function startGame() {                //makes drop buttons available to play
+  //makes drop buttons available to play
+  function startGame() {
     if(gameInProgress === true) {
       $('.dropButton').on('click', handleClick);
     }
   }
 
-  function endGame() {                  //disables drop buttons
+  //disables drop buttons
+  function endGame() {
     $('.dropButton').attr('disabled', true);
-
     document.getElementById('announceWinner').style.visibility='visible'; //announces there is a winner
     document.getElementById('playAgain').style.visibility='visible';
     $('#playAgain').on('click', resetGame);     //displays the play again button,which also triggers reset conditions
     winnerSong();
   }
 
-  function resetGame() {        //resets all variables
+  //resets all variables
+  function resetGame() {
     columns =   //resets grid array so win cond and token placement is valid
     [[0, 7, 14, 21, 28, 35],
     [1, 8, 15, 22, 29, 36],
@@ -196,8 +210,6 @@ $(() => {
 
   //identifies the last available index in an array to place token
   function handleClick() {
-    console.log('clicked');
-    console.log(columnIndex);
     columnIndex = $(this).index();  //grabs the column array which provides the available index
     assignToken(currentPlayer, columnIndex); //asigns player to the index
     currentPlayer = currentPlayer === 'player1' ? 'player2' : 'player1';
@@ -240,7 +252,7 @@ $(() => {
       });
     });
   }
-  
+
   //logs scores on the player scoreboard
   function updateScore(winner) {
     gameInProgress = false;
