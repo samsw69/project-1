@@ -26,7 +26,7 @@ h1 {
   font-size: 60px;
   color: #450caa;
   font-family: 'Monoton', cursive;
-  padding-bottom: : 20px;
+  /*padding-bottom: : 20px;*/
 }
 
 h2 {
@@ -72,7 +72,6 @@ h3 {
   font-size: 20px;
   color: white;
   text-align: center;
-  height: 20px;
   visibility: visible;
   position: absolute;
   top: 10%;
@@ -100,7 +99,6 @@ h3 {
   float: left;
   display: inline-flex;;
   visibility: visible;
-  /*check if visible works*/
 }
 
 .Selleck, .Arnie, .Clooney, .Hoff {
@@ -124,10 +122,6 @@ h3 {
   background-image: url("../images/Player2_Hoff.png");
 }
 
-.gBuster {
-  background-image: url("../images/gBuster.png");
-}
-
 .hunkButton, .imgHolder1, .imgHolder2 {
   height: 100px;
   width: 100px;
@@ -137,17 +131,14 @@ h3 {
 
 .dropButton {
   padding: 22px;
-  font: white;
   font-weight: bold;
   font-size: 30px;
-  /*width: 60px;*/
   color: white;
   background-color: rgba(20, 122, 49, 0.35);
 }
 
 .button_drop {
   text-align: center;
-  /*visibility: hidden;*/
 }
 
 .gameBoard {
@@ -158,7 +149,6 @@ h3 {
 .leftSide, .rightSide {
   width: 15%;
   height: 800px;
-  /*background-color: orange;*/
   font-size: 20px;
   color: white;
   float: left;
@@ -183,7 +173,6 @@ li {
   float: left;
   height: 60px;
   border: 1px solid white;
-  /*text-align: center;*/
   padding: 3px;
   margin: 2px;
 }
@@ -191,13 +180,6 @@ li {
 .squares {
   float: left;
   height, width: 56px;
-}
-
-.squares:.move-down {
-  transform: translate(0,350px);
-  -webkit-transform: translate(0,350px);
-  -o-transform: translate(0,350px);
-  -moz-transform: translate(0,350px);
 }
 
 #player1Score, #player2Score {
@@ -247,7 +229,7 @@ li {
 
 
 @media {
-  min-width: 500px;
-  max-width:900px
-  .dropButton: {width: 12%}
+  min-width: 50%;
+  max-width:70%
+  /*.dropButton: {width: 12%}*/
 }

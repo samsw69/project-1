@@ -33,25 +33,27 @@ $(() => {
   var columns = columnsCopy;
   let squareIdx = 0;
 
-//button clicks
+  //button clicks
   $('.play').on('click', hideWelcome);
   $('.instructions').on('click', hideInstructions);
-  //select hunk for player token
-  $('.hunkButton').on('mouseover', () => playSong('barryW'));
   $('.hunkButton').on('click', selectHunk);
+  $('.dropButton').on('click', handleClick);
+  $('#playAgain').on('click', playAgain);
+  $('#reset').on('click', resetGame);
+  $('.hunkButton').on('mouseover', () => playSong('barryW'));
 
   //allows player to select the token to represent their game play
   function selectHunk(){
-    if (hunk1Id) {
-      hunk2Id = $(this).attr('data-hunk');  //data-hunk allows extra classification
+    if (hunk1Id) {                      //checks is player1 has selected..
+      hunk2Id = $(this).attr('data-hunk');
       $player2Pic.addClass(hunk2Id);  //applies selected token to player
-      $('.selectHunkUl').hide();
+      $('.selectHunkUl').hide();     //hides tokens once both players selected
     } else {
-      hunk1Id = $(this).attr('data-hunk');
+      hunk1Id = $(this).attr('data-hunk');  //gets and applies Player1 token
       $player1Pic.addClass(hunk1Id);
     }
 
-    $(`.${hunk1Id}`).attr('disabled', true);
+    $(`.${hunk1Id}`).attr('disabled', true);   //diables ability to select token twice
   }
 
   //hides the welcome screen by making game components opaque to progress to game play section
@@ -59,37 +61,33 @@ $(() => {
     $('.welcome-overlay').hide();
     $('.gameBoard, .instructions').removeClass('transparent');
   }
-  //
+
+  //hides instructions once player clicks ok
   function hideInstructions() {
-    //Replaces \document.getElementByClass('instructions').style.visibility='hidden';
     $('.instructions').hide();
   }
 
-  //sets up 'audio player' to play audio files as required
+  //sets up 'audio player' to play all audio files as called
   function playSong(filename) {
     var audio = document.getElementById('audio');
     audio.src = `audio/${filename}.wav`;
     audio.play();
   }
 
-  $('.dropButton').on('click', handleClick);
-  $('#playAgain').on('click', playAgain);
-  $('#reset').on('click', resetGame);
-
   function endGame() {
     //disables drop buttons
     $('.dropButton').attr('disabled', true);
     // shows there is a winner
     $('#announceWinner').css({ visibility: 'visible' });
-    //shows the buttons for next game or return to welcome screen
+    //shows the buttons to select 'next game' or 'return to welcome screen'
     $('#playAgain').css({ visibility: 'visible' });
     $('#reset').css({ visibility: 'visible' });
     playSong('TheBest');
   }
 
-  //resets all variables
+  //resets all variables for next game to start
   function playAgain() {
-    columns =   //resets grid array so win cond and token placement is valid
+    columns =   //reinstates grid array
     [[0, 7, 14, 21, 28, 35],
     [1, 8, 15, 22, 29, 36],
     [2, 9, 16, 23, 30, 37],
@@ -103,17 +101,13 @@ $(() => {
     currentPlayer = 'player1';
     columnIndex = 0;
     squareIdx = [];
-    //hides the winner announcement, play again button, enables drop button and removes classes in grid to denote token placement
-    // refactor to jQuery
-    // hideInstructions();
-    // $('#playAgain').attr('disabled', true);
-    // $('#reset').attr('disabled', true);
+    // makes drop selectors active, removes classed from grid and removes instruction
     $('.dropButton').attr('disabled', false);
     $squares.removeClass('Clooney Arnie Selleck Hoff');
     $('#announceWinner').css({ visibility: 'hidden' });
-
   }
 
+  //as well as game reset, this removes player selection, resets and removes scores and returns to welcome screen, showing the player tokens available
   function resetGame() {
     playAgain();
     $('#playAgain').attr('disabled', false);
@@ -135,7 +129,6 @@ $(() => {
     hunk1Id = null;
     hunk2Id = null;
     $('#announceWinner').css({ visibility: 'hidden' });
-
   }
 
   //identifies the last available index in an array to place token
@@ -143,27 +136,24 @@ $(() => {
     if(!gameInProgress) return false;
     columnIndex = $(this).index();  //grabs the column array which provides the available index
     assignToken(currentPlayer, columnIndex); //asigns player to the index
-    currentPlayer = currentPlayer === 'player1' ? 'player2' : 'player1';
+    currentPlayer = currentPlayer === 'player1' ? 'player2' : 'player1'; //alternates player
   }
 
   function assignToken(currentPlayer, columnIndex) {
-    //checks for the column array, and pops last indice
+    //checks for the column array, and pops last index
     squareIdx = columns[columnIndex].pop();
-    //saves result in var for use
+    //saves result in var
     const $square = $squares.eq(squareIdx);
     // assigns player in action, to the square
     const classToAdd = currentPlayer === 'player1' ? hunk1Id : hunk2Id;
     //and assigns their token
     $square.addClass(classToAdd);
+    // logs player to the square selected
     playerStatus(currentPlayer, squareIdx);
-
   }
-  //updates the player progress by pushing last square placed (index) to players array
+
+  //updates the player progress by pushing index of last square placed to players array and checks if any win condition has been met
   function playerStatus(currentPlayer, squareIdx) {
-
-    // const player = currentPlayer === 'player1' ? player1 : player2;
-    // player.push(squareIdx);
-
     if (currentPlayer === 'player1') {
       player1.push(squareIdx);
     } else {
@@ -173,15 +163,16 @@ $(() => {
       updateScore(currentPlayer);
     }
   }
+
   // checks array as it stands, against all possible win conditions
   function checkForWin() {
     // confirms which player to check
     const playerArrayToCheck = currentPlayer === 'player1' ? player1 : player2;
-    //finds all win conditions with some of the numbers in player array
+    //finds all win conditions with some of the numbers in player array (ext JS file)
     return phwoar.allWinConditions.some((condition) => {
       //then returns any which have exact match of any numbers in player array
       return condition.every((idx) => {
-        //confirms if there is a winner on turn just played
+        //confirms if there is a winner
         return playerArrayToCheck.includes(idx);
       });
     });
@@ -202,7 +193,7 @@ $(() => {
 });
 
 
-//comments on code improvement:
+//comments on code improvement for learning purposes:
 
 // ORIGINAL
 //  function playBarry() {
@@ -215,10 +206,14 @@ $(() => {
 //   audio.src = 'audio/TheBest.wav';
 //   audio.play();
 // }
-//REPLACED by
+// REPLACED by
 // $('.hunkButton').on('mouseover', () => playSong('barryW'));
 
-//ORIGINAL
+// ORIGINAL
 // $('#playAgain').attr('disabled', false);
 // REPLACES
 // document.getElementById('announceWinner').style.visibility='hidden';
+
+// /\document.getElementByClass('instructions').style.visibility='hidden';
+// REPLACED BY
+// $('.instructions').hide();

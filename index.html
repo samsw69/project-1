@@ -1,35 +1,26 @@
 <!DOCTYPE html>
 <html>
-
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Connect Phwoar</title>
-
-    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
     <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Barrio|Monoton|Pangolin|Comfortaa" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
     <script src="http://code.jquery.com/jquery-3.1.1.min.js"></script>
-
     <script src="js/winConditions.js" charset="utf-8"></script>
     <script src="js/app.js" charset="utf-8"></script>
-    <link href="https://fonts.googleapis.com/css?family=Barrio|Monoton|Pangolin|Comfortaa" rel="stylesheet">
-
   </head>
   <body>
-
     <header>
       <h1>Phwoar-in-a-Row</h1>
     </header>
-
     <audio id="audio"></audio>
-
     <main>
-
       <div class="instructions transparent">
-        <p>Click on the arrows above the grid, to drop your hunk directly into the slot beneath it...</p>
-        <button class="ok">OK, Got It!</button>
+        <p>Click on the arrows above the grid,<br>to drop your hunk directly into the slot beneath it...</p>
+        <button class="ok">OK, got it!</button>
       </div>
-
       <div class="welcome-overlay">
         <div class="welcome">
           <h2>Ready to connect phwoar...?</h2>
@@ -37,7 +28,6 @@
           <p>horizontally, vertically or diagonally to win!</p>
           <p>Select your hunk...</p>
         </div>
-
         <div class="selectHunkDiv">
           <ul class="selectHunkUl">
             <button class="hunkButton Selleck" data-hunk="Selleck"></button>
@@ -46,21 +36,16 @@
             <button class="hunkButton Hoff" data-hunk="Hoff"></button>
           </ul>
         </div>
-
         <div class="welcomeLink">
           <button class="play">Let's play!</button>
         </div>
       </div>
-
       <div class="leftSide">
         <h2>Player 1 Score</h2>
         <div class="imgHolder1"></div>
         <br><br>
         <h3 id="player1Score"></h3>
       </div>
-
-
-
       <div class="gameBoard transparent">
         <div class="button_drop">
           <button class="dropButton"><span>&#8595;</span></button>
@@ -71,11 +56,9 @@
           <button class="dropButton"><span>&#8595;</span></button>
           <button class="dropButton"><span>&#8595;</span></button>
         </div>
-
         <div>
           <p id="announceWinner">Hey, we have a Winner!</p>
         </div>
-
         <div class="grid">
           <img class="squares">
           <ul>
@@ -123,20 +106,17 @@
             <li class="" id="41"></li>
           </ul>
         </div>
-
         <div class="playAgainButtons">
-          <button id="playAgain">play again?</button>
+          <button id="playAgain">play again</button>
           <button id="reset">reset game</button>
         </div>
       </div>
-
       <div class="rightSide">
         <h2>Player 2 Score</h2>
         <div class="imgHolder2"></div>
         <br><br>
         <h3 id="player2Score"></h3>
       </div>
-
     </main>
   </body>
 </html>
