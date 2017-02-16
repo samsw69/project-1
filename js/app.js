@@ -33,13 +33,12 @@ $(() => {
   var columns = columnsCopy;
   let squareIdx = 0;
 
+//button clicks
   $('.play').on('click', hideWelcome);
   $('.instructions').on('click', hideInstructions);
   //select hunk for player token
   $('.hunkButton').on('mouseover', () => playSong('barryW'));
   $('.hunkButton').on('click', selectHunk);
-
-
 
   //allows player to select the token to represent their game play
   function selectHunk(){
@@ -55,16 +54,18 @@ $(() => {
     $(`.${hunk1Id}`).attr('disabled', true);
   }
 
+  //hides the welcome screen by making game components opaque to progress to game play section
   function hideWelcome() {
     $('.welcome-overlay').hide();
     $('.gameBoard, .instructions').removeClass('transparent');
   }
-
+  //
   function hideInstructions() {
-    //
-    $('.instructions').hide(); //set up in css for .visible / see welcome-overlay. Replaces \document.getElementByClass('instructions').style.visibility='hidden'/;
+    //Replaces \document.getElementByClass('instructions').style.visibility='hidden';
+    $('.instructions').hide();
   }
 
+  //sets up 'audio player' to play audio files as required
   function playSong(filename) {
     var audio = document.getElementById('audio');
     audio.src = `audio/${filename}.wav`;
