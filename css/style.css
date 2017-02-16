@@ -1,6 +1,6 @@
 body {
   background: white;
-  /*height: 800px;*/
+  height: auto;
 }
 
 header {
@@ -15,6 +15,8 @@ h3 {
   color: white;
   font-weight: bold;
   text-align: center;
+  border: 2px;
+  border-color: white;
 }
 
 .selectHunkDiv {
@@ -109,8 +111,9 @@ h2 {
   font-size: 30px;
   /*width: 60px;*/
   color: white;
-  background-color: black;
+  background-color: rgba(20, 122, 49, 0.35);
 }
+
 
 .leftSide, .rightSide {
   width: 15%;
@@ -131,8 +134,15 @@ h2 {
   height, width: 56px;
 }
 
+.squares:.move-down {
+    transform: translate(0,350px);
+    -webkit-transform: translate(0,350px);
+    -o-transform: translate(0,350px);
+    -moz-transform: translate(0,350px);
+}
+
 main {
-  max-width: 900px;
+  /*max-width: 900px;*/
   height: 800px;
   margin: 0 auto;
   background-image: url("../images/beach.png");
@@ -206,6 +216,9 @@ li {
   color: white;
   font-weight: bold;
   text-align: center;
+  border: 2px;
+  border-bottom-width: thick;
+  border-color: white;
   }
 
 #playAgain, .play, .ok {
@@ -221,4 +234,5 @@ li {
 
 #playAgain {
   visibility: hidden;
+  display: block;
 }

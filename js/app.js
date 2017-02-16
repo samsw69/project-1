@@ -135,8 +135,6 @@ $(() => {
     }
   }
 
-
-
   function hideWelcome() {
     $('.welcome-overlay').hide();
   }
@@ -146,7 +144,6 @@ $(() => {
     $('.instructions').hide(); //set up in css for .visible / see welcome-overlay
   }
 
-//find error for DOM event handler - get smaller mp3 and cut to size
   function playBarry() {
     var audio = document.getElementById('audio');
     audio.src = 'audio/barryW.wav';
@@ -158,14 +155,6 @@ $(() => {
     audio.src = 'audio/TheBest.wav';
     audio.play();
   }
-
-  // function stopBarry() {
-  //   var audio = document.getElementById('audio');
-  //   audio.src = '/audio/barry.wav';
-  //   audio.stop();
-  // }
-
-
 
   function startGame() {                //makes drop buttons available to play
     if(gameInProgress === true) {
@@ -219,12 +208,13 @@ $(() => {
     squareIdx = columns[columnIndex].pop();
     //saves result in var for use
     const $square = $squares.eq(squareIdx);
-    // assigns player in action to the square
+    // assigns player in action, to the square
     const classToAdd = currentPlayer === 'player1' ? hunk1Id : hunk2Id;
     //and assigns their token
     $square.addClass(classToAdd);
     playerStatus(currentPlayer, squareIdx);
     //***try to add some transition dowm into slots ** do this last**
+
   }
   //updates the player progress by pushing last square placed (index) to players array
   function playerStatus(currentPlayer, squareIdx) {
@@ -237,7 +227,7 @@ $(() => {
       updateScore(currentPlayer);
     }
   }
-  // checks array as it stands against all possible win conditions
+  // checks array as it stands, against all possible win conditions
   function checkForWin() {
     // confirms which player to check
     const playerArrayToCheck = currentPlayer === 'player1' ? player1 : player2;
@@ -250,6 +240,7 @@ $(() => {
       });
     });
   }
+  
   //logs scores on the player scoreboard
   function updateScore(winner) {
     gameInProgress = false;
