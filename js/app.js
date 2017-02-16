@@ -104,11 +104,13 @@ $(() => {
     squareIdx = [];
     //hides the winner announcement, play again button, enables drop button and removes classes in grid to denote token placement
     // refactor to jQuery
-
+    // hideInstructions();
     // $('#playAgain').attr('disabled', true);
     // $('#reset').attr('disabled', true);
     $('.dropButton').attr('disabled', false);
     $squares.removeClass('Clooney Arnie Selleck Hoff');
+    $('#announceWinner').css({ visibility: 'hidden' });
+
   }
 
   function resetGame() {
@@ -131,6 +133,7 @@ $(() => {
 
     hunk1Id = null;
     hunk2Id = null;
+    $('#announceWinner').css({ visibility: 'hidden' });
 
   }
 
