@@ -129,9 +129,6 @@ $(() => {
       $player1Pic.addClass(hunk1Id);
     }
 
-    // if (hunk2Id === hunk1Id) {
-    //   $(hunk2Id).removeClass().addClass('gBuster');
-    // }
     if($player1Pic.hasClass('Clooney')) {
       $('.Clooney').attr('disabled', true);
     } else if($player1Pic.hasClass('Selleck')) {
@@ -142,10 +139,6 @@ $(() => {
       $('.Arnie').attr('disabled', true);
     }
   }
-
-
-      //if image is not selected, but button is, 'insist' on image selection before proceeding
-
 
   function hideWelcome() {
     $('.welcome-overlay').hide();
