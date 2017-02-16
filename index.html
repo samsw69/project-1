@@ -5,9 +5,12 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Connect Phwoar</title>
+
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
     <link rel="stylesheet" href="css/style.css">
     <script src="http://code.jquery.com/jquery-3.1.1.min.js"></script>
+
+    <script src="js/winConditions.js" charset="utf-8"></script>
     <script src="js/app.js" charset="utf-8"></script>
     <link href="https://fonts.googleapis.com/css?family=Barrio|Monoton|Pangolin|Comfortaa" rel="stylesheet">
 
@@ -22,7 +25,7 @@
 
     <main>
 
-      <div class="instructions">
+      <div class="instructions transparent">
         <p>Click on the arrows above the grid, to drop your hunk directly into the slot beneath it...</p>
         <button class="ok">OK, Got It!</button>
       </div>
@@ -56,10 +59,9 @@
         <h3 id="player1Score"></h3>
       </div>
 
-      <!-- try this for overlay with instruction -->
 
 
-      <div class="gameBoard">
+      <div class="gameBoard transparent">
         <div class="button_drop">
           <button class="dropButton"><span>&#8595;</span></button>
           <button class="dropButton"><span>&#8595;</span></button>
@@ -123,13 +125,13 @@
         </div>
 
         <div class="playAgainButtons">
-          <button id="playAgain">Play again?</button>
+          <button id="playAgain">play again?</button>
+          <button id="reset">reset game</button>
         </div>
       </div>
 
       <div class="rightSide">
         <h2>Player 2 Score</h2>
-        <!-- check out input for Player name -->
         <div class="imgHolder2"></div>
         <br><br>
         <h3 id="player2Score"></h3>
