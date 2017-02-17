@@ -21,7 +21,7 @@ At the end of a game, the scores update for each player. A brief winners song pl
 #####Game Rules
 
 1. Select your token piece.
-2. Select the column you want to play your token by clicking on the arrow directly above it.  The token drops to the next available slot.
+2. Select the column you want to play your token in, by clicking on the arrow directly above it.  The token drops to the next available slot.
 3. Take it in turns to play your token.
 4. The first player to get 4 tokens in a line, vertically, horizontally or diagonally is the winner.
 
@@ -40,7 +40,7 @@ After each turn, the players array is checked against the win conditions (of whi
 1. searching for win arrays which contain some of the players numbers 
 2. of those arrays, searching for any in which all of the indices in the win array are present in the players array
 3. if present, a win is announced
-4. if not, the other player takes their turn and play contnues.
+4. if not, the other player takes their turn and play continues.
 
 Once a winner is announced there is the option to:
 
@@ -61,7 +61,7 @@ Minimal sound is included. Audio is triggered by:
 
 The greatest challenges were:
 
-1. designing the logic for the grid, so that a location could be identified and logged when a 'slot' was selected (in a methodical and efficient way)
+1. designing the logic for the grid, so that a location could be identified and logged when a 'slot' was selected 
 2. ensuring that the player placed their token according to the 'rules of gravity' - ie the lowest available 'slot' in a column
 3. ensuring occupied 'slots' could not be re-used again during current play
 4. logging the progress for two players and storing the information in a way that could be easily re-used to check for a winner
